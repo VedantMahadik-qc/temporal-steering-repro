@@ -1,0 +1,34 @@
+Grid: 41x41 points over (p, P) in [0,1]^2, alpha = 0.55
+
+Sanity control -- no-NOT case, simulation vs. Eq. (3):
+  max |C_sim - C_analytic| = 3.009e-14
+
+With-NOT case, simulation vs. Eq. (4) [Appendix B literal formula]:
+  convention A (sigma_x on qubit 1 only):  max err = 1.513e-01
+  convention B (sigma_x x sigma_x, both):  max err = 7.315e-02
+
+With-NOT case, convention B simulation vs. Eq. (14) at x=1
+[paper's OWN general time-dependent formula, Sec. II]:
+  max err = 5.765e-09
+
+VERDICT:
+  Convention B (sigma_x x sigma_x, BOTH qubits) is confirmed correct --
+  by the paper's explicit wording (Sec. II + Appendix A, Eq. A4/A8),
+  and by matching Eq. (14) at x=1 to numerical precision.
+  Eq. (4) / Appendix B's B8-B11 (the paper's OWN dedicated
+  ADC-NOT-ADC derivation) does NOT match this simulation, and does
+  NOT algebraically reduce from the paper's own Eq. (14) at x=1 --
+  an internal inconsistency in the paper, not a convention ambiguity.
+  Confirmed present in both the PDF and the arXiv preprint
+  (2505.16622v2), so not a PDF-extraction artifact. See NOTES.md.
+
+Component-level diagnostic at p=0.3, P=0.4, alpha=0.55:
+                    rho11      rho14      rho22      rho23      rho44
+paper Eq(B9)     0.517399   0.225996   0.175551   0.206243   0.131499
+sim: single-Q    0.452731   0.000000   0.240219   0.192923   0.052731
+sim: both-Q      0.517399   0.192923   0.175551   0.000000   0.131499
+
+rho11/rho22/rho44 from the 'both-qubit' simulation match Eq. (B9)
+to machine precision (populations agree exactly). Only the
+coherence terms (rho14, rho23) disagree -- and rho14=(1-p)(1-P)*a*b
+from the simulation exactly equals the paper's OWN Eq. (13) X term.

@@ -1,0 +1,25 @@
+Grid comparison (21x21, alpha=0.55, gamma=1), continuous Lindblad
+propagation (superoperator exponentiation) vs. Phase-1 closed forms:
+  no-NOT   vs Eq. (3)          : max err = 6.564e-12
+  with-NOT vs Eq. (14)|x=1     : max err = 7.288e-12
+  with-NOT vs Eq. (4)  literal : max err = 7.228e-02
+
+p1/p2 thresholds, root-found DIRECTLY from the continuous-time
+simulation (brentq on the unclamped signed Wootters quantity,
+independent of any closed-form algebra):
+  p1 (avoidance -> delay) = 0.1359
+  p2 (delay -> hastening) = 0.2833
+
+Comparison against all three numbers now in hand:
+  source                                   p1         p2
+  Eq. (4) literal (Phase 1)            0.2249     0.4224
+  Eq. (14)|x=1 (Phase 1, recommended)     0.1356     0.2832
+  Table I (paper, stated)              0.1700     0.2800
+  Continuous Lindblad (this script)     0.1359     0.2833
+
+Relative gap of the continuous-time result from each reference:
+  vs. Eq. (4)     : p1 gap =  39.6%   p2 gap =  32.9%
+  vs. Eq. (14)|x=1: p1 gap =   0.2%   p2 gap =   0.0%
+  vs. Table I     : p1 gap =  20.1%   p2 gap =   1.2%
+
+VERDICT: the continuous-time Lindblad simulation agrees with Eq. (14)|x=1 (Phase 1's recommended formula) to numerical precision, confirming it independently of the discrete Kraus-operator bookkeeping used in Phase 1. It does NOT agree with Eq. (4), nor with Table I's stated p1=0.17 -- the same two open discrepancies from Phase 1 persist here, now cross-checked by a second, independent numerical method.

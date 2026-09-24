@@ -1,0 +1,13 @@
+Sanity check: g=0 (cavity decoupled) vs. Phase 2's plain AD model
+  max err (no NOT)   = 5.440e-15
+  max err (with NOT) = 1.632e-14
+  (should be ~machine precision; confirms the cavity model correctly
+   collapses to Phase 2 when the atom-cavity coupling is switched off)
+
+Sweep: alpha=0.55, gamma=1.0, g=1.0, T=0.5
+ kappa/gamma    C_noNOT        t1*   C(T) max       gain
+         0.1     0.0736     0.0000     0.2696     0.1960
+         1.0     0.0819     0.0000     0.2785     0.1966
+        10.0     0.1388     0.0000     0.3356     0.1968
+
+VERDICT: optimal intervention time t1* does NOT shift with kappa/gamma -- t1*=0.0000 (the earliest time checked) for all three ratios tested (0.1, 1.0, 10.0). Confirmed robust by also checking T=1.5, 2.0, 2.4, 2.8 (see NOTES_PHASE3.md) -- t1*=0 in every case. What DOES change with kappa/gamma is the MAGNITUDE of C(T) achieved (larger kappa/gamma, i.e. the bad-cavity/Purcell regime, gives higher surviving concurrence here, since the effective Purcell decay rate 4g^2/kappa shrinks as kappa grows), and the shape/steepness of the C(t1) falloff -- not the location of the optimum.

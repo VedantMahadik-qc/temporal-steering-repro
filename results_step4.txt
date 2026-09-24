@@ -1,0 +1,8 @@
+Continuous-time sweep: C(T) vs. intervention time t1, alpha=0.55, gamma=1
+
+T=0.5:  C_noNOT = 0.2243   best t1* = 0.0000  ->  C(T)_max = 0.4128   (gain over no-NOT: +0.1885)
+       C(t1=0.50=T, with NOT) = 0.2243  (sanity: should equal C_noNOT = 0.2243, local-unitary invariance)
+T=1.0:  C_noNOT = 0.0136   best t1* = 0.0000  ->  C(T)_max = 0.1973   (gain over no-NOT: +0.1837)
+       C(t1=1.00=T, with NOT) = 0.0136  (sanity: should equal C_noNOT = 0.0136, local-unitary invariance)
+T=2.0:  C_noNOT = 0.0000   best t1* = 0.0000  ->  C(T)_max = 0.0535   (gain over no-NOT: +0.0535)
+       C(t1=2.00=T, with NOT) = 0.0000  (sanity: should equal C_noNOT = 0.0000, local-unitary invariance)

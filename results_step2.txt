@@ -1,0 +1,37 @@
+alpha = 0.55, beta = 0.835165
+
+Thresholds using Eq. (14) at x=1 [RECOMMENDED -- verified against
+a from-scratch Kraus-map simulation to 5.8e-9, see step1]:
+  p1 (avoidance -> delay)  = 0.135600   [Table I: ~0.17]
+    exact closed form p1 = 1 - 1/(|ab|+b^2) = 0.135577
+    (root-find and closed form agree to 1e-4; the p1 vs. 0.17 gap
+    is real, not a numerical-precision artifact -- see NOTES.md)
+  p2 (delay -> hastening)  = 0.2832   [Table I: ~0.28, matches to ~1%]
+
+Thresholds using Eq. (4) literal [paper's own Appendix B formula,
+does NOT match the Kraus simulation -- reference only]:
+  p1 (avoidance -> delay)  = 0.225000   [Table I: ~0.17]
+    exact closed form p1 = 1 - (1-|ab|)/b^2 = 0.224861
+  p2 (delay -> hastening)  = 0.4224   [Table I: ~0.28]
+
+p1 closed-form comparison (both formulas checked against Table I's 0.17):
+  Eq. (4) closed-form p1      = 0.224861  (gap from 0.17: 32.3% relative)
+  Eq. (14)|x=1 closed-form p1 = 0.135577  (gap from 0.17: 20.2% relative)
+  Neither formula's p1 threshold lands near Table I's 0.17. p1 is
+  genuinely unresolved under either candidate formula -- see NOTES.md.
+
+Representative points (Eq. 14|x=1, recommended):
+  p= 0.00  P_ESD_noNOT=0.6586  P_ESD_withNOT=1.0000  dP=+0.3414
+  p= 0.05  P_ESD_noNOT=0.6406  P_ESD_withNOT=1.0000  dP=+0.3594
+  p= 0.10  P_ESD_noNOT=0.6206  P_ESD_withNOT=1.0000  dP=+0.3794
+  p= 0.14  P_ESD_noNOT=0.6030  P_ESD_withNOT=0.9838  dP=+0.3808
+  p= 0.17  P_ESD_noNOT=0.5886  P_ESD_withNOT=0.8766  dP=+0.2880
+  p= 0.20  P_ESD_noNOT=0.5732  P_ESD_withNOT=0.7744  dP=+0.2012
+  p= 0.22  P_ESD_noNOT=0.5622  P_ESD_withNOT=0.7096  dP=+0.1473
+  p= 0.25  P_ESD_noNOT=0.5447  P_ESD_withNOT=0.6175  dP=+0.0728
+  p= 0.28  P_ESD_noNOT=0.5258  P_ESD_withNOT=0.5322  dP=+0.0065
+  p= 0.30  P_ESD_noNOT=0.5122  P_ESD_withNOT=0.4793  dP=-0.0330
+  p= 0.35  P_ESD_noNOT=0.4747  P_ESD_withNOT=0.3606  dP=-0.1141
+  p= 0.40  P_ESD_noNOT=0.4309  P_ESD_withNOT=0.2613  dP=-0.1696
+  p= 0.43  P_ESD_noNOT=0.4010  P_ESD_withNOT=0.2106  dP=-0.1904
+  p= 0.50  P_ESD_noNOT=0.3171  P_ESD_withNOT=0.1160  dP=-0.2012

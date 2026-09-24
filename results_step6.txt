@@ -1,0 +1,9 @@
+Strong-coupling stress test: alpha=0.55, gamma=1.0, g=10.0 (g/gamma=10), T=0.3
+(T chosen so a full vacuum Rabi revival occurs at this g -- see docstring)
+
+ kappa/gamma    C_noNOT        t1*   C(T) max       gain
+         0.1     0.5771     0.0000     0.6853     0.1082
+         1.0     0.3896     0.0000     0.5467     0.1571
+        10.0     0.0000     0.0000     0.0681     0.0681
+
+VERDICT: t1* = 0 (earliest possible intervention) STILL WINS for all three kappa/gamma ratios, even in this strong-coupling (g/gamma=10), full-revival regime (T=0.3, tuned to sit on the first revival peak). Fine-grained checks (step 0.002) confirmed no hidden local maximum near either boundary -- C(t1) decreases monotonically from t1=0, dips through zero, and only partially recovers toward C_noNOT as t1 -> T, never exceeding the t1=0 value. This is a second, harder test (non-monotonic, oscillatory C(t1) with a full collapse-and-revival built in) that the step5 finding survives.
